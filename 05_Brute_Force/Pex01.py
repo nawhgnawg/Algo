@@ -5,16 +5,28 @@ sizes = [[60, 50], [30, 70], [60, 30], [80, 40]]
 
 # 1차
 def solution1(sizes):
-    max_value = 0
-    min_value = 0
+    row = 0
+    col = 0
     for size in sizes:
         a, b = size[0], size[1]
-        if a > max_value:
-            max_value = a
-            print(max_value)
-        if b > min_value:
-            min_value = b
+        if a > b:
+            row = max(b, row)
+            col = max(a, col)
+        else:
+            row = max(a, row)
+            col = max(b, col)
 
-    return max_value * min_value
+    return row * col
+
+# 2차
+def solution2(sizes):
+    row = 0
+    col = 0
+    for a, b in sizes:
+        if a < b:
+            a, b = b, a
+        row = max(row, a)
+        col = max(col, b)
+    return row * col
 
 print(solution1(sizes))
