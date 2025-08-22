@@ -61,3 +61,32 @@ def bestSolution(numbers, target):
 
 
 print(solution2(numbers, target))
+
+
+# 250821
+
+# 주어지는 숫자의 개수는 2개 이상 20개 이하입니다.
+# 각 숫자는 1 이상 50 이하인 자연수입니다.
+# 타겟 넘버는 1 이상 1000 이하인 자연수입니다.
+
+def target_number(numbers, target):
+    answer = 0
+    # 모든 경우의 수를 찾기 때문에 BFS를 사용
+    leaves = [0]
+    for number in numbers:
+        temp = []
+        for leaf in leaves:
+            temp.append(leaf + number)
+            temp.append(leaf - number)
+        leaves = temp
+
+    # for leaf in leaves:
+    #     if leaf == target:
+    #         answer += 1
+    answer = leaves.count(target)
+    return answer
+
+print(f"numbers = [1, 1, 1, 1, 1], target = 3 -> return {target_number([1, 1, 1, 1, 1], 3)}")  # 5
+print(f"numbers = [4, 1, 2, 1], target = 4 -> return {target_number([4, 1, 2, 1], 4)}")        # 2
+
+
