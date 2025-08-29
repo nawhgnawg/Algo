@@ -8,9 +8,28 @@
 
 # 12 -> 12 * 1, 6 * 2, 4 * 3
 # 48 -> 48 * 1, 24 * 2, 16 * 3, 12 * 4, 8 * 6
+
+# xy = yellow
+# (x + 2) * (y + 2) - xy = brown
+# 2x + 2y = brown
+# x = yellow / y
+# x = brown / 2 - y
+# (yellow / 2) = (brown / 2) - y
+# import math
+# def solution(brown, yellow):
+#     w = ((brown + 4) / 2 + math.sqrt(((brown + 4) / 2) ** 2 - 4 * (brown + yellow))) / 2
+#     h = ((brown + 4) / 2 - math.sqrt(((brown + 4) / 2) ** 2 - 4 * (brown + yellow))) / 2
+#     return [w, h]
+
 def solution(brown, yellow):
     answer = []
-    
+    total = brown + yellow  # a * b = total
+    for b in range(1, total + 1):
+        if (total / b) % 1 == 0:  # total / b = a
+            a = total / b
+            if a >= b:  # a >= b
+                if 2 * a + 2 * b == brown + 4:  # 2*a + 2*b = brown + 4
+                    return [a, b]
 
     return answer
 
