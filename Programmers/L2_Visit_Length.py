@@ -10,14 +10,14 @@
 def solution(dirs):
     x, y = 0, 0
     visited = set()
-
+    # 1. dx, dy 로 표현 말고 -> UDRL 이 정해져 있기때문에 딕셔너리로 표현
     moves = {
         'U': (0, 1),
         'D': (0, -1),
         'R': (1, 0),
         'L': (-1, 0),
     }
-
+    # 탐색
     for d in dirs:
         dx, dy = moves[d]
         nx, ny = x + dx, y + dy
