@@ -3,7 +3,6 @@
 
 from collections import deque
 
-
 def solution(bridge_length, weight, truck_weights):
     time = 0
     bridge = deque([0] * bridge_length)  # 다리 상태 (0=빈 자리)
