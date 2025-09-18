@@ -35,12 +35,15 @@ def solution(genres, plays):
     for g in genre_songs:
         genre_songs[g].sort(key=lambda x: (-x[0], x[1]))
 
-    # 총 재생 수로 장르 정렬
-    sorted_genres = sorted(genre_total.keys(), key=lambda x: genre_total[x], reverse=True)
-    # sorted_genres = sorted(genre_total.keys(), key=lambda x: genre_total[x])
+    # 총 재생 수로 장르 정렬 (내림차순)
+    # sorted_genres = sorted(genre_total.keys(), key=lambda x: genre_total[x], reverse=True)
+    sorted_genres = sorted(genre_total.keys(), key=lambda x: genre_total[x], reverse=False)
+    print(sorted_genres)
+    print(genre_total)
 
     for g in sorted_genres:
         answer.extend([idx for _, idx in genre_songs[g][:2]])  # 상위 2곡 선택
+        # answer.append(idx for _, idx in genre_songs[g][:2])  # 상위 2곡 선택
 
     return answer
 
