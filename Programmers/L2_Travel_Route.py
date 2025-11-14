@@ -2,12 +2,7 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/43164
 
 
-# 티켓을 출발지 기준으로 정렬 (알파벳 순서대로 경로가 나오도록)
-# DFS로 경로를 하나씩 만들어 감.
-#   현재 공항에서 갈 수 있는 티켓을 순회.
-#   그 티켓을 사용했다고 표시하고 다음 공항으로 이동.
-#   모든 티켓을 사용했다면 경로를 반환.
-# 가장 먼저 완성되는 경로가 곧 사전순으로 가장 앞선 경로.
+
 def solution(tickets):
     tickets.sort()
     print(f'tickets: {tickets}')
@@ -26,6 +21,7 @@ def solution(tickets):
 
                 result = dfs(end, cnt + 1)
                 if result:
+                    print(f"result: {result}")
                     return result
 
                 # 백트래킹

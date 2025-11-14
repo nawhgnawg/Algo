@@ -34,62 +34,86 @@
 # print(solution(mats, park))
 
 
-def solution(a, b, c, d):
-    data = [a, b, c, d]
-    data.sort()
-    if data[0] == data[3]:
-        return 1111 * data[0]
-    elif data[0] == data[2]:
-        return (10 * data[0] + data[3]) ** 2
-    elif data[1] == data[3]:
-        return (10 * data[1] + data[0]) ** 2
-    elif data[0] == data[1] and data[2] == data[3]:
-        return (data[0] + data[2]) * abs(data[0] - data[2])
-    elif data[0] == data[1]:
-        return data[2] * data[3]
-    elif data[1] == data[2]:
-        return data[0] * data[3]
-    elif data[2] == data[3]:
-        return data[0] * data[1]
-    else:
-        return min(data)
-    return -1
+# def solution(a, b, c, d):
+#     data = [a, b, c, d]
+#     data.sort()
+#     if data[0] == data[3]:
+#         return 1111 * data[0]
+#     elif data[0] == data[2]:
+#         return (10 * data[0] + data[3]) ** 2
+#     elif data[1] == data[3]:
+#         return (10 * data[1] + data[0]) ** 2
+#     elif data[0] == data[1] and data[2] == data[3]:
+#         return (data[0] + data[2]) * abs(data[0] - data[2])
+#     elif data[0] == data[1]:
+#         return data[2] * data[3]
+#     elif data[1] == data[2]:
+#         return data[0] * data[3]
+#     elif data[2] == data[3]:
+#         return data[0] * data[1]
+#     else:
+#         return min(data)
+#     return -1
+#
+#
+# print(solution(4, 1, 4, 4))
+#
+# num = [4, 1, 4, 4]
+# li = [num.count(i) for i in num]
+# print("li: ", li)
+# print("li.index(): ", li.index(3))
+#
+# print(not (set("0555") - set(['0', '5'])))
+#
+#
+# def pro(arr, cnt):
+#     for i, num in enumerate(arr):
+#         if num >= 50 and num % 2 == 0:
+#             arr[i] = num // 2
+#         elif num < 50 and num % 2 == 1:
+#             arr[i] = num * 2 + 1
+#     return arr, cnt
+#
+#
+# import re
+#
+#
+# def solution1(myStr):
+#     answer = []
+#     sp = re.split(r'[a,b,c]', myStr)
+#     for s in sp:
+#         if s != '':
+#             answer.append(s)
+#     return answer
+#
+#
+# print(solution1("baconlettucetomato"))
+#
+# print([[0 for _ in range(4)] for _ in range(4)])
+# print([[0] * 4 for _ in range(4)])
 
 
-print(solution(4, 1, 4, 4))
+# 순열, 조합
+import math
+from itertools import permutations
+from itertools import combinations
 
-num = [4, 1, 4, 4]
-li = [num.count(i) for i in num]
-print("li: ", li)
-print("li.index(): ", li.index(3))
+nums = [1, 2, 3, 4, 5]
+per_count = 0
+for i, num in enumerate(permutations(nums, 3)):
+    if i == 0:
+        print('permutation')
 
-print(not (set("0555") - set(['0', '5'])))
+    per_count += 1
+    print(num, per_count)
 
+com_count = 0
+for i, num in enumerate(combinations(nums, 3)):
+    if i == 0:
+        print('combinations')
 
-def pro(arr, cnt):
-    for i, num in enumerate(arr):
-        if num >= 50 and num % 2 == 0:
-            arr[i] = num // 2
-        elif num < 50 and num % 2 == 1:
-            arr[i] = num * 2 + 1
-    return arr, cnt
+    com_count += 1
+    print(num, com_count)
 
-
-import re
-
-
-def solution1(myStr):
-    answer = []
-    sp = re.split(r'[a,b,c]', myStr)
-    for s in sp:
-        if s != '':
-            answer.append(s)
-    return answer
-
-
-print(solution1("baconlettucetomato"))
-
-print([[0 for _ in range(4)] for _ in range(4)])
-print([[0] * 4 for _ in range(4)])
-
-
+print(f'per_count = {math.perm(5, 3)}')
+print(f'comb_count = {math.comb(5, 3)}')
