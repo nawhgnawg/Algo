@@ -12,7 +12,7 @@ for i in range(1, len(a)):
 
 # 구간 합을 구하는 공식(i에서 j까지 구간 합): S[j] - S[i - 1]
 
-# TODO 백준 11660 - 실버 1 - 구간 합 구하기
+# example 백준 11660 - 실버 1 - 구간 합 구하기
 # return 27, 6, 64
 n, m = 4, 3     # 2차원 배열의 크기, 구갑 합 질의의 개수
 graph = [[0, 0, 0, 0, 0],
@@ -111,7 +111,7 @@ def solution2(n, m, graph, sum_nums):
 print(solution2(n, m, graph, sum_nums))
 
 
-# TODO 백준 10986 - 골드 3 - 나머지 합 구하기
+# example 백준 10986 - 골드 3 - 나머지 합 구하기
 # process 구간 합 구했음 -> 메모리 초과
 # import sys
 # input = sys.stdin.readline
@@ -166,7 +166,7 @@ print(solution2(n, m, graph, sum_nums))
 #
 # print(answer)
 
-# TODO 백준 11003번 - 플래티넘 - 최솟값 찾기 1
+# example 백준 11003번 - 플래티넘 - 최솟값 찾기 1
 # process 시간 초과 - min(a[start: i + 1])는 매번 O(N x L)이 걸림 -> 최악의 경우 5백만 × 5백만 = 25조 연산 → 절대 통과 불가
 # import sys
 # input = sys.stdin.readline
