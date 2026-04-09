@@ -24,8 +24,8 @@ for i in range(n):
         happy_count += 1
 
 # 2. 모든 세로줄(열) 검사
-for i in range(n):
-    col_seq = [grid[i][j] for j in range(n)]
+for j in range(n):
+    col_seq = [grid[i][j] for i in range(n)]
     if is_happy(col_seq):
         happy_count += 1
 
