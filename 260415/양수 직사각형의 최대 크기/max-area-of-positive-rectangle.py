@@ -9,7 +9,7 @@ def is_positive(r1, c1, r2, c2):
     return True
 
 
-max_area = 0
+max_area = -1
 
 # 양수 직사각형들 구하기
 for r1 in range(n):
