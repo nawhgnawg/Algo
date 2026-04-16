@@ -3,7 +3,7 @@ info = []
 
 for _ in range(n):
     name, korean, english, math = input().split()
-    info.append((name, int(korean), iint(english), int(math)))
+    info.append((name, int(korean), int(english), int(math)))
 
 info.sort(key=lambda x: (x[1], x[2], x[3]), reverse=True)
 
