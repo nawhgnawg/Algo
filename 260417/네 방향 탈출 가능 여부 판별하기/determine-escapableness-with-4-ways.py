@@ -13,10 +13,10 @@ visited = [[0] * m for _ in range(n)]
 # 큐 생성
 q = deque()
 q.append((0, 0))
+visited[0][0] = 1
 
 while q:
     x, y = q.popleft()
-    visited[x][y] = 1
     
     for i in range(4):
         nx = x + dx[i]
@@ -26,6 +26,7 @@ while q:
         if 0 <= nx < n and 0 <= ny < m and a[nx][ny] == 1:
             # 방문하지 않았다면 큐에 추가
             if not visited[nx][ny]:
+                visited[nx][ny] = 1
                 q.append((nx, ny))
 
 print(visited[n - 1][m - 1])
