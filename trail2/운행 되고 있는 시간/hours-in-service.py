@@ -1,7 +1,7 @@
 n = int(input())
 times = [tuple(map(int, input().split())) for _ in range(n)]
 
-answer = []
+answer = 0
 for i in range(n):
     remaining = [times[j] for j in range(n) if j != i]
 
@@ -9,8 +9,8 @@ for i in range(n):
 
     for start, end in remaining:
         for k in range(start, end):
-            if t[k] == 0:
-                t[k] += 1
-    answer.append(t.count(1))
+            t[k] = 1
 
-print(max(answer))
+    answer = max(answer, sum(t))
+
+print(answer)
