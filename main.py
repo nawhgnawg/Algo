@@ -94,26 +94,102 @@
 
 
 # 순열, 조합
-import math
-from itertools import permutations
-from itertools import combinations
+# import math
+# from itertools import permutations
+# from itertools import combinations
+#
+# nums = [1, 2, 3, 4, 5]
+# per_count = 0
+# for i, num in enumerate(permutations(nums, 3)):
+#     if i == 0:
+#         print('permutation')
+#
+#     per_count += 1
+#     print(num, per_count)
+#
+# com_count = 0
+# for i, num in enumerate(combinations(nums, 3)):
+#     if i == 0:
+#         print('combinations')
+#
+#     com_count += 1
+#     print(num, com_count)
+#
+# print(f'per_count = {math.perm(5, 3)}')
+# print(f'comb_count = {math.comb(5, 3)}')
 
-nums = [1, 2, 3, 4, 5]
-per_count = 0
-for i, num in enumerate(permutations(nums, 3)):
-    if i == 0:
-        print('permutation')
+'''
+# CodeTree
+# n, m = map(int, input().split())
+# grid = [list(map(int, input().split())) for _ in range(n)]
+#
+# gold_price = 0
+#
+#
+# def find_gold(r, c, k):
+#     gold = 0
+#     for i in range(n):
+#         for j in range(n):
+#             if abs(r - i) + abs(c - j) <= k:
+#                 gold += grid[i][j]
+#                 # print(f"기준점이 ({r}, {c})이고 k는 {k} 일때 -> i: {i}, j: {j}, gold: {gold}")
+#     return gold
+#
+#
+# max_gold = 0
+# # n = 5 -> k = 1, 2, 3, 4, 5, 6, 7, 8
+# # (0, 0) k = 1 -> (0, 0) = 0 + 0 <= 1    O
+# #                 (0, 1) = 0 + 1 <= 1    O
+# #                 (0, 2) = 0 + 2 <= 2    X
+# # (0, 1) k = 1 ->
+# # 1. 모든 격자의 위치를 중심점(i, j)으로 설정
+# for i in range(n):
+#     for j in range(n):
+#         # 2. 마름모의 크기를 0부터 격자 전체를 덮을 수 있는 크기 (2 * n)까지 키워봄
+#         for k in range(2 * n + 1):
+#             current_gold = find_gold(i, j, k)
+#             cost = k ** 2 + (k + 1) ** 2
+#             # 손해를 보지 않는 경우에만 갱신
+#             if current_gold * m >= cost:
+#                 max_gold = max(max_gold, current_gold)
+#
+# # print(max_gold)
+'''
 
-    per_count += 1
-    print(num, per_count)
 
-com_count = 0
-for i, num in enumerate(combinations(nums, 3)):
-    if i == 0:
-        print('combinations')
+'''
+# # CodeTree BFS - 1
+# from collections import deque
+# 
+# n, m = map(int, input().split())
+# a = [list(map(int, input().split())) for _ in range(n)]
+# 
+# # 1. 방향 설정 (상, 하, 좌, 우)
+# dx = [-1, 1, 0, 0]
+# dy = [0, 0, -1, 1]
+# 
+# # 2. 방문 배열
+# visited = [[0] * m for _ in range(n)]
+# 
+# # 큐 생성
+# q = deque()
+# q.append((0, 0))
+# visited[0][0] = 1
+# 
+# while q:
+#     x, y = q.popleft()
+# 
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+# 
+#         # 범위랑 조건(뱀이 없는 곳)을 만족하는지 확인
+#         if 0 <= nx < n and 0 <= ny < m and a[nx][ny] == 1:
+#             # 방문하지 않았다면 큐에 추가
+#             if not visited[nx][ny]:
+#                 visited[nx][ny] = 1
+#                 q.append((nx, ny))
+# 
+# print(visited[n - 1][m - 1])
+'''
 
-    com_count += 1
-    print(num, com_count)
-
-print(f'per_count = {math.perm(5, 3)}')
-print(f'comb_count = {math.comb(5, 3)}')
