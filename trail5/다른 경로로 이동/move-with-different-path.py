@@ -11,7 +11,7 @@ for _ in range(m):
     graph[u].append((v, w))
     graph[v].append((u, w))
 
-# 정점 번호가 작은 것을 먼저 탐색할 수 있도록 인접 리스트 미리 정렬
+# 사전순 탐색을 위해 각 정점의 인접 리스트 정렬 (도착 정점 번호 기준)
 for i in range(1, n + 1):
     graph[i].sort()
 
@@ -44,20 +44,15 @@ curr = 1
 a_edges = set()
 
 while curr != n:
-    next_candidates = []
     for next_node, weight in graph[curr]:
-        # 최단 경로 상에 놓이는 조건: dist[curr] == weight + dist[next_node]
+        # 최단 경로 상에 놓이는 조건: 현재 정점까지의 거리 == 간선 가중치 + 다음 정점에서 N까지의 최단 거리
         if dist_from_n[curr] == weight + dist_from_n[next_node]:
-            next_candidates.append(next_node)
-            
-    # 인접 리스트가 이미 정렬되어 있으므로 후보 중 가장 번호가 작은 것이 사전순으로 가장 앞섬
-    next_node = next_candidates[0]
-    
-    # A가 사용한 간선 기록
-    a_edges.add((min(curr, next_node), max(curr, next_node)))
-    curr = next_node
+            # 인접 리스트가 이미 정렬되어 있으므로 처음 만나는 후보가 '사전순으로 가장 앞서는' 정점임
+            a_edges.add((min(curr, next_node), max(curr, next_node)))
+            curr = next_node
+            break
 
-# 3. B의 다익스트라 (1번에서 출발, A가 사용한 간선 제외)
+# 3. B의 다익스트라 (1번에서 출발, A가 사용한 간선들은 제외)
 def dijkstra_B():
     dist = [float('inf')] * (n + 1)
     pq = []
@@ -72,7 +67,7 @@ def dijkstra_B():
             continue
         
         for next_node, weight in graph[cur]:
-            # A가 사용한 간선이면 제외
+            # A가 사용한 간선이면 건너뛰기
             if (min(cur, next_node), max(cur, next_node)) in a_edges:
                 continue
 
